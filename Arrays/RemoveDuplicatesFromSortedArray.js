@@ -16,3 +16,21 @@ var removeDuplicates = function(nums) {
     }    
     return k;
 };
+
+
+var removeDuplicatesBadPerformance = function(nums) {
+    var k = 1;
+    var index = 1;
+
+    while (index < nums.length) {
+        var num = nums[index];
+        if (nums[index - 1] === num) {
+            nums.splice(index, 1);
+        } else {
+            k++;
+            index++;
+        }
+    }
+    
+    return k;
+};
