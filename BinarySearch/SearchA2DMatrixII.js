@@ -1,0 +1,46 @@
+/**
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+var searchMatrix = function (matrix, target) {
+    for (var i = 0; i < matrix.length; i++) {
+        var columns = matrix[i];
+        var left = 0;
+        var right = columns.length - 1;
+
+        if (columns[left] > target || columns[right] < target) {
+            continue;
+        }
+
+        while (left <= right) {
+
+            var middle = left + Math.floor((right - left) / 2);
+
+            if (columns[left] === target || columns[right] === target || columns[middle] === target) {
+                return true
+            }
+
+            if (columns[middle] > target) {
+                right = middle - 1;
+            } else {
+                left = middle + 1;
+            }
+
+        }
+    }
+    return false;
+};
+
+
+var searchMatrixBetterSolution = function(matrix, target) {
+    const m = matrix.length ;n = matrix[0].length
+    let row = 0,col = n - 1
+    while(row<m && col>=0){
+        let num = matrix[row][col]
+        if(num === target) return true
+        else if(num>target) col--
+        else row++
+    }
+    return false
+};
