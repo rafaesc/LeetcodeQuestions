@@ -48,10 +48,6 @@ All course IDs are in the range {1, n}.
 function minNumberOfSemesters(n, prerequisites) {
 	var courseByRequired = {}
 	var coursesSet = new Set();
-	var order = [];
-	var positionByCourse = {}
-	var maxPositionByCourse = {};
-
 
 	for (var i = 0; i < prerequisites.length; i++) {
 		var course = prerequisites[i][1];
@@ -65,12 +61,9 @@ function minNumberOfSemesters(n, prerequisites) {
 	}
 
 	var count = 0;
-	
-	var max = 0;
 
-	while (Object.keys(courseByRequired).length > 0 && max < 6) {
+	while (Object.keys(courseByRequired).length > 0) {
 		count++;
-		max++
 		
 		var courses = Object.keys(courseByRequired);
 		var firstPosition = new Set();
